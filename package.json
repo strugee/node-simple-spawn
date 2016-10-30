@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/strugee/node-smart-spawn#readme",
   "devDependencies": {
+    "jshint": "^2.9.4",
     "vows": "^0.8.1"
   },
   "dependencies": {
