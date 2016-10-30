@@ -2,6 +2,12 @@
 
 `smart-spawn` follows [Semantic Versioning][1].
 
+## 1.0.3 - 2016-10-29
+
+### Fixed
+
+* List `concat-stream` as a dependency
+
 ## 1.0.2 - 2016-10-29
 
 ### Improved
