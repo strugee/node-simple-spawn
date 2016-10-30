@@ -23,7 +23,17 @@ suite.addBatch({
 			},
 			'a `ChildProcess` object is returned': function(childProcess, err, stdout) {
 				assert.isObject(childProcess);
-				assert(childProcess instanceof ChildProcess);
+
+				try {
+					assert(childProcess instanceof ChildProcess);
+				} catch (e) {
+					// Node 0.10 hack
+					if (e instanceof TypeError) {
+						assert(childProcess.pid);
+					} else {
+						throw e;
+					}
+				}
 			},
 			'there\'s no error': function(childProcess, err, stdout) {
 				assert.ifError(err);
