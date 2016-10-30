@@ -76,7 +76,7 @@ module.exports = function smartSpawn(name, args, targetCwd, callback) {
 	process.on('exit', function(code, signal) {
 		// Handle non-zero exits
 		if (code !== 0) {
-			callbackErr = new Error('Process `' + name + ' ' + args.join(' ') + '` exited with non-zero exit code' + code + '; stderr is:\n' + stderr);
+			callbackErr = new Error('Process `' + name + ' ' + args.join(' ') + '` exited with non-zero exit code ' + code + '; stderr is:\n' + stderr);
 			wantCallbackError = true;
 
 			maybeFireCallback();
