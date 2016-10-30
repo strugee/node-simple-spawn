@@ -1,6 +1,7 @@
 'use strict';
 
 var assert = require('assert'),
+    ChildProcess = require('child_process').ChildProcess,
     vows = require('vows');
 
 var suite = vows.describe('Non-zero exit handling');
@@ -16,13 +17,19 @@ suite.addBatch({
 		'and spawn the `false` binary': {
 			topic: function(spawn) {
 				var callback = this.callback;
-				spawn('false', [], process.cwd(), this.callback);
+				var childProcess = spawn('false', [], process.cwd(), function(err, stdout) {
+					callback(childProcess, err, stdout);
+				});
 			},
-			'an error is returned': function(err, stdout) {
+			'a `ChildProcess` object is returned': function(childProcess, err, stdout) {
+				assert.isObject(childProcess);
+				assert(childProcess instanceof ChildProcess);
+			},
+			'an error is sent to the callback': function(childProcess, err, stdout) {
 				assert(err);
 				assert.equal(err.toString(), 'Error: Process `false ` exited with non-zero exit code 1; stderr is:\n');
 			},
-			'the result is undefined': function(err, stdout) {
+			'the result is undefined': function(childProcess, err, stdout) {
 				assert.equal(stdout, undefined);
 			}
 		}
