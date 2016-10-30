@@ -22,5 +22,8 @@
   "homepage": "https://github.com/strugee/node-smart-spawn#readme",
   "devDependencies": {
     "vows": "^0.8.1"
+  },
+  "dependencies": {
+    "concat-stream": "^1.5.2"
   }
 }
