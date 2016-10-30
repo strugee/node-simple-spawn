@@ -1,0 +1,23 @@
+{
+  "name": "simple-spawn",
+  "version": "1.0.0",
+  "description": "Spawn an async process, get back stdout, stderr, and a status code, handling errors",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strugee/node-simple-spawn.git"
+  },
+  "keywords": [
+    "spawn",
+    "process"
+  ],
+  "author": "Alex Jordan <alex@strugee.net>",
+  "license": "LGPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/strugee/node-simple-spawn/issues"
+  },
+  "homepage": "https://github.com/strugee/node-simple-spawn#readme"
+}
