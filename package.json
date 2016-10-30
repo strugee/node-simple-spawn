@@ -1,5 +1,5 @@
 {
-  "name": "simple-spawn",
+  "name": "smart-spawn",
   "version": "1.0.0",
   "description": "Spawn an async process and get back stdout, handling errors",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/strugee/node-simple-spawn.git"
+    "url": "git+https://github.com/strugee/node-smart-spawn.git"
   },
   "keywords": [
     "spawn",
@@ -17,7 +17,7 @@
   "author": "Alex Jordan <alex@strugee.net>",
   "license": "LGPL-3.0+",
   "bugs": {
-    "url": "https://github.com/strugee/node-simple-spawn/issues"
+    "url": "https://github.com/strugee/node-smart-spawn/issues"
   },
-  "homepage": "https://github.com/strugee/node-simple-spawn#readme"
+  "homepage": "https://github.com/strugee/node-smart-spawn#readme"
 }

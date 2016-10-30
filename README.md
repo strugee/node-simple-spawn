@@ -1,17 +1,17 @@
-# `simple-spawn`
+# `smart-spawn`
 
 Spawn an async process and get back stdout, handling errors
 
 ## Installation
 
-    npm install simple-spawn
+    npm install smart-spawn
 
 ## Usage
 
 ```js
-var simpleSpawn = require('simple-spawn');
+var smartSpawn = require('smart-spawn');
 
-var process = simpleSpawn('ls', ['-l'], process.cwd(), function(err, stdout) {
+var process = smartSpawn('ls', ['-l'], process.cwd(), function(err, stdout) {
 	if (err) throw err;
 
 	console.log(stdout);
@@ -26,7 +26,7 @@ The callback receives two arguments. The first is an `Error` object which is pas
 
 ## Return value
 
-`simple-spawn` will return an instance of [`ChildProcess`][1] representing the spawned subprocess.
+`smart-spawn` will return an instance of [`ChildProcess`][1] representing the spawned subprocess.
 
 ## License
 

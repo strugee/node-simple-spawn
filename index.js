@@ -16,7 +16,7 @@
 var childProcess = require('child_process');
 var concatStream = require('concat-stream');
 
-module.exports = function simpleSpawn(name, args, targetCwd, callback) {
+module.exports = function smartSpawn(name, args, targetCwd, callback) {
 	// Done here so it gets the right scope
 	function maybeFireCallback() {
 		// This function is called in any place where we might have completed a task that allows us to fire
