@@ -4,7 +4,8 @@
   "description": "Spawn an async process and get back stdout, handling errors",
   "main": "index.js",
   "scripts": {
-    "test": "vows -v test/*.js"
+    "test": "npm run lint && vows -v test/*.js",
+    "lint": "jshint index.js test/*.js"
   },
   "repository": {
     "type": "git",
