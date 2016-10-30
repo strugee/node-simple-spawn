@@ -1,6 +1,6 @@
 # `simple-spawn`
 
-Spawn an async process, get back stdout, stderr, and a status code, handling errors
+Spawn an async process and get back stdout, handling errors
 
 ## Installation
 
@@ -8,9 +8,25 @@ Spawn an async process, get back stdout, stderr, and a status code, handling err
 
 ## Usage
 
+```js
+var simpleSpawn = require('simple-spawn');
 
+var process = simpleSpawn('ls', ['-l'], process.cwd(), function(err, stdout) {
+	if (err) throw err;
 
-## Options
+	console.log(stdout);
+}
+```
+
+## Arguments
+
+Arguments are, in order: the name of the process to spawn, arguments passed to the subprocess, the subprocess' working directory, and a callback function.
+
+The callback receives two arguments. The first is an `Error` object which is passed if the process couldn't be spawned or if it exited with a nonzero exit code. The second is the process' stdout upon its completion.
+
+## Return value
+
+`simple-spawn` will return an instance of [`ChildProcess`][1] representing the spawned subprocess.
 
 ## License
 
@@ -19,3 +35,5 @@ LGPL 3.0+
 ## Author
 
 Alex Jordan <alex@strugee.net>
+
+ [1]: https://nodejs.org/api/child_process.html#child_process_class_childprocess

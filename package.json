@@ -1,7 +1,7 @@
 {
   "name": "simple-spawn",
   "version": "1.0.0",
-  "description": "Spawn an async process, get back stdout, stderr, and a status code, handling errors",
+  "description": "Spawn an async process and get back stdout, handling errors",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
