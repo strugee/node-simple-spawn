@@ -2,6 +2,12 @@
 
 `smart-spawn` follows [Semantic Versioning][1].
 
+## 1.0.2 - 2016-10-29
+
+### Improved
+
+* The module now contains a `'use strict';` directive
+
 ## 1.0.1 - 2016-10-29
 
 ### Fixed
