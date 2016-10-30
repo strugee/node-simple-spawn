@@ -3,7 +3,7 @@
 var assert = require('assert'),
     vows = require('vows');
 
-var suite = vows.describe('Successful spawn handling');
+var suite = vows.describe('Non-zero exit handling');
 
 suite.addBatch({
 	'When we require the module': {
