@@ -39,8 +39,8 @@ suite.addBatch({
 				assert(err);
 				assert.equal(err.toString(), 'Error: Process `false ` exited with non-zero exit code 1; stderr is:\n');
 			},
-			'the result is undefined': function(childProcess, err, stdout) {
-				assert.equal(stdout, undefined);
+			'the result is the empty string': function(childProcess, err, stdout) {
+				assert.equal(stdout, '');
 			}
 		}
 	}
