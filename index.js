@@ -21,7 +21,7 @@ var concatStream = require('concat-stream');
 function maybeNewExecError(name, args, stderr, code, existingError) {
 	// Returns a new error if all the necessary information is available
 
-	if (typeof stderr === 'string' && typeof code === 'number') {
+	if (typeof stderr === 'string' && typeof code === 'number' && code !== 0) {
 		return new Error('Process `' + name + ' ' + args.join(' ') + '` exited with non-zero exit code ' + code + '; stderr is:\n' + stderr);
 	} else {
 		return undefined;
@@ -85,9 +85,7 @@ module.exports = function smartSpawn(name, args, targetCwd, callback) {
 
 		exitCode = code;
 
-		if (code !== 0) {
-			callbackErr = callbackErr instanceof Error ? callbackErr : maybeNewExecError(name, args, stderr, exitCode, callbackErr);
-		}
+		callbackErr = callbackErr instanceof Error ? callbackErr : maybeNewExecError(name, args, stderr, exitCode, callbackErr);
 
 		wantCallback = true;
 		maybeFireCallback();
