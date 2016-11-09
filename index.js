@@ -38,7 +38,7 @@ module.exports = function smartSpawn(name, args, targetCwd, callback) {
 		// If everything is ready, we *should* fire the callback, and it hasn't already been fired, then do so
 		if (stdoutReady && stderrReady && wantCallback && !callbackFired) {
 			callbackFired = true;
-			callback(callbackErr, callbackErr instanceof Error ? undefined : stdout);
+			callback(callbackErr, stdout);
 		}
 	}
 
