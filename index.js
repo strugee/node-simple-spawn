@@ -18,6 +18,16 @@
 var childProcess = require('child_process');
 var concatStream = require('concat-stream');
 
+function maybeNewExecError(name, args, stderr, code, existingError) {
+	// Returns a new error if all the necessary information is available
+
+	if (typeof stderr === 'string' && typeof code === 'number') {
+		return new Error('Process `' + name + ' ' + args.join(' ') + '` exited with non-zero exit code ' + code + '; stderr is:\n' + stderr);
+	} else {
+		return undefined;
+	}
+}
+
 module.exports = function smartSpawn(name, args, targetCwd, callback) {
 	// Done here so it gets the right scope
 	function maybeFireCallback() {
@@ -40,11 +50,12 @@ module.exports = function smartSpawn(name, args, targetCwd, callback) {
 
 	var process = childProcess.spawn(name, args, { cwd: targetCwd });
 
-	// We need all this to synchronize callbacks with when stuff is done buffering, execing, etc.
+	// We want all this to synchronize callbacks with when stuff is done buffering, execing, etc.
 	var callbackFired = false;
 	var callbackFiredErr = false;
 	var wantCallback = false;
 	var wantCallbackError = false;
+	var exitCode;
 	var callbackErr;
 	var stdoutReady = false;
 	var stderrReady = false;
@@ -57,11 +68,13 @@ module.exports = function smartSpawn(name, args, targetCwd, callback) {
 		maybeFireCallback();
 	});
 
-	// Capture stderr in case we need it for an Error object
+	// Capture stderr in case we want it for an Error object
 	var stderr;
 	process.stderr.pipe(concatStream(function(buf) {
 		stderr = buf.toString();
 		stderrReady = true;
+
+		callbackErr = callbackErr instanceof Error ? callbackErr : maybeNewExecError(name, args, stderr, exitCode, callbackErr);
 
 		maybeFireCallback();
 	}));
@@ -77,9 +90,13 @@ module.exports = function smartSpawn(name, args, targetCwd, callback) {
 
 	process.on('exit', function(code, signal) {
 		// Handle non-zero exits
+
+		exitCode = code;
+
 		if (code !== 0) {
-			callbackErr = new Error('Process `' + name + ' ' + args.join(' ') + '` exited with non-zero exit code ' + code + '; stderr is:\n' + stderr);
 			wantCallbackError = true;
+
+			callbackErr = callbackErr instanceof Error ? callbackErr : maybeNewExecError(name, args, stderr, exitCode, callbackErr);
 
 			maybeFireCallback();
 
