@@ -33,18 +33,12 @@ module.exports = function smartSpawn(name, args, targetCwd, callback) {
 	function maybeFireCallback() {
 		// This function is called in any place where we might have completed a task that allows us to fire
 
-		if (callbackFired || callbackFiredErr) return;
+		if (callbackFired) return;
 
 		// If everything is ready, we *should* fire the callback, and it hasn't already been fired, then do so
 		if (stdoutReady && stderrReady && wantCallback && !callbackFired) {
 			callbackFired = true;
-			callback(null, stdout);
-		}
-
-		// Ditto for the callback with an error argument
-		if (stdoutReady && stderrReady && wantCallbackError && !callbackFiredErr) {
-			callbackFiredErr = true;
-			callback(callbackErr);
+			callback(callbackErr, callbackErr instanceof Error ? undefined : stdout);
 		}
 	}
 
@@ -52,9 +46,7 @@ module.exports = function smartSpawn(name, args, targetCwd, callback) {
 
 	// We want all this to synchronize callbacks with when stuff is done buffering, execing, etc.
 	var callbackFired = false;
-	var callbackFiredErr = false;
 	var wantCallback = false;
-	var wantCallbackError = false;
 	var exitCode;
 	var callbackErr;
 	var stdoutReady = false;
@@ -63,7 +55,7 @@ module.exports = function smartSpawn(name, args, targetCwd, callback) {
 	// Handle spawn errors
 	process.on('error', function(err) {
 		callbackErr = err;
-		wantCallbackError = true;
+		wantCallback = true;
 
 		maybeFireCallback();
 	});
@@ -94,13 +86,7 @@ module.exports = function smartSpawn(name, args, targetCwd, callback) {
 		exitCode = code;
 
 		if (code !== 0) {
-			wantCallbackError = true;
-
 			callbackErr = callbackErr instanceof Error ? callbackErr : maybeNewExecError(name, args, stderr, exitCode, callbackErr);
-
-			maybeFireCallback();
-
-			return;
 		}
 
 		wantCallback = true;
