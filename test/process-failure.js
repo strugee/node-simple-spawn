@@ -1,8 +1,8 @@
 'use strict';
 
 var assert = require('assert'),
-    ChildProcess = require('child_process').ChildProcess,
-    vows = require('vows');
+    vows = require('vows'),
+    childProcessTest = require('./lib/childprocess-object.js');
 
 var suite = vows.describe('Non-zero exit handling');
 
@@ -21,20 +21,7 @@ suite.addBatch({
 					callback(childProcess, err, stdout);
 				});
 			},
-			'a `ChildProcess` object is returned': function(childProcess, err, stdout) {
-				assert.isObject(childProcess);
-
-				try {
-					assert(childProcess instanceof ChildProcess);
-				} catch (e) {
-					// Node 0.10 hack
-					if (e instanceof TypeError) {
-						assert(childProcess.pid);
-					} else {
-						throw e;
-					}
-				}
-			},
+			'a `ChildProcess` object is returned': childProcessTest,
 			'an error is sent to the callback': function(childProcess, err, stdout) {
 				assert(err);
 				assert.equal(err.toString(), 'Error: Process `false ` exited with non-zero exit code 1; stderr is:\n');
