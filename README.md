@@ -22,7 +22,7 @@ var process = smartSpawn('ls', ['-l'], process.cwd(), function(err, stdout) {
 
 Arguments are, in order: the name of the process to spawn, arguments passed to the subprocess, the subprocess' working directory, and a callback function.
 
-The callback receives two arguments. The first is an `Error` object which is passed if the process couldn't be spawned or if it exited with a nonzero exit code. The second is the process' stdout upon its completion.
+The callback receives two arguments. The first is an `Error` object which is passed if the process couldn't be spawned or if it exited with a nonzero exit code, otherwise it's `undefined`. The second is the process' stdout upon its completion (regardless of any errors that may have occured).
 
 ## Return value
 

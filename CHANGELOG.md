@@ -2,6 +2,18 @@
 
 `smart-spawn` follows [Semantic Versioning][1].
 
+## 2.0.0 - 2016-11-09
+
+### Improved
+
+* Refactored module for simplicity
+
+### Breaking
+
+* Fix error messages' stderr text sometimes being the word "undefined"
+* If there was no error, the first callback argument will be `undefined`, not `null`
+* stdout is returned even if there was an error
+
 ## 1.0.3 - 2016-10-29
 
 ### Fixed
