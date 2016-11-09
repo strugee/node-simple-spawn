@@ -2,6 +2,12 @@
 
 `smart-spawn` follows [Semantic Versioning][1].
 
+## 2.0.1 - 2016-11-09
+
+### Fixed
+
+* Fix an error sometimes being returned even if the process finished with an exit code of zero
+
 ## 2.0.0 - 2016-11-09
 
 ### Improved
