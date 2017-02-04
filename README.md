@@ -1,5 +1,7 @@
 # `smart-spawn`
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/strugee/node-smart-spawn.svg)](https://greenkeeper.io/)
+
 Spawn an async process and get back stdout, handling errors
 
 ## Installation
