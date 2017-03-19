@@ -1,5 +1,7 @@
 # `smart-spawn`
 
+[![Build Status](https://travis-ci.org/strugee/node-smart-spawn.svg?branch=master)](http://travis-ci.org/strugee/node-smart-spawn)
+[![npm](https://img.shields.io/npm/v/smart-spawn.svg)](https://npmjs.com/package/smart-spawn)
 [![Greenkeeper badge](https://badges.greenkeeper.io/strugee/node-smart-spawn.svg)](https://greenkeeper.io/)
 
 Spawn an async process and get back stdout, handling errors
