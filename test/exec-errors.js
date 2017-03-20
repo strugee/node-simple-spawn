@@ -24,7 +24,6 @@ suite.addBatch({
 			'a `ChildProcess` object is returned': childProcessTest,
 			'an error is sent to the callback': function(childProcess, err, stdout) {
 				assert(err);
-				assert.equal(err.toString(), 'Error: spawn nonexistant ENOENT');
 			},
 			'the result is the null string': function(childProcess, err, stdout) {
 				assert.equal(stdout, '');
