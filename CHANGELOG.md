@@ -2,6 +2,12 @@
 
 `smart-spawn` follows [Semantic Versioning][1].
 
+## 3.0.0 - Future
+
+### Breaking
+
+* Node 0.10/0.12 are no longer supported
+
 ## 2.0.1 - 2016-11-09
 
 ### Fixed
