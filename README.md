@@ -1,6 +1,7 @@
 # `smart-spawn`
 
 [![Build Status](https://travis-ci.org/strugee/node-smart-spawn.svg?branch=master)](http://travis-ci.org/strugee/node-smart-spawn)
+[![Coverage Status](https://coveralls.io/repos/github/strugee/node-smart-spawn/badge.svg?branch=master)](https://coveralls.io/github/strugee/node-smart-spawn?branch=master)
 [![npm](https://img.shields.io/npm/v/smart-spawn.svg)](https://npmjs.com/package/smart-spawn)
 [![Greenkeeper badge](https://badges.greenkeeper.io/strugee/node-smart-spawn.svg)](https://greenkeeper.io/)
 
