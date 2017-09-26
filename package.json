@@ -4,7 +4,7 @@
   "description": "Spawn an async process and get back stdout, handling errors",
   "main": "index.js",
   "scripts": {
-    "test": "npm run lint && vows -v test/*.js",
+    "test": "npm run lint && nyc -r lcov vows -v test/*.js",
     "lint": "jshint index.js test/*.js"
   },
   "repository": {
@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/strugee/node-smart-spawn#readme",
   "devDependencies": {
+    "coveralls": "^2.13.1",
     "jshint": "^2.9.4",
+    "nyc": "^11.2.1",
     "vows": "^0.8.1"
   },
   "dependencies": {
