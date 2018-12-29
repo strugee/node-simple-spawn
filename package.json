@@ -28,7 +28,7 @@
     "vows": "^0.8.1"
   },
   "dependencies": {
-    "concat-stream": "^1.5.2"
+    "concat-stream": "^2.0.0"
   },
   "engine": {
     "node": ">=6"
