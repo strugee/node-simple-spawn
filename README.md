@@ -13,7 +13,7 @@ Spawn an async process and get back stdout, handling errors
 
 ## Usage
 
-You need Node 4+. It'll probably run on 0.10 and 0.12 too, but the test suite doesn't cover those versions, so you're on your own.
+You need Node 6+. It'll probably run on 0.10, 0.12 and 4 too, but the test suite doesn't cover those versions, so you're on your own. And you should upgrade anyway because those are horribly insecure.
 
 ```js
 var smartSpawn = require('smart-spawn');
