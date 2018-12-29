@@ -6,7 +6,7 @@
 
 ### Breaking
 
-* Node 0.10/0.12 are no longer supported
+* Node 0.10/0.12/4 are no longer supported
 
 ## 2.0.1 - 2016-11-09
 

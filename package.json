@@ -29,5 +29,8 @@
   },
   "dependencies": {
     "concat-stream": "^1.5.2"
+  },
+  "engine": {
+    "node": ">=6"
   }
 }
