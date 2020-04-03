@@ -24,7 +24,7 @@
   "devDependencies": {
     "coveralls": "^3.0.0",
     "jshint": "^2.9.4",
-    "nyc": "^14.0.0",
+    "nyc": "^15.0.1",
     "vows": "^0.8.1"
   },
   "dependencies": {
